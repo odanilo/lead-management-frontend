@@ -11,7 +11,8 @@
   --card-foreground: hsl(240 10% 3.9%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(240 10% 3.9%);
-  --primary: hsl(240 5.9% 10%);
+  --primary: hsl(23.32 99.06% 58.24%);
+  --primary-900: hsl(23.43 71.31% 46.47%);
   --primary-foreground: hsl(0 0% 98%);
   --secondary: hsl(240 4.8% 95.9%);
   --secondary-foreground: hsl(240 5.9% 10%);
@@ -30,6 +31,9 @@
   --chart-4: hsl(43 74% 66%);
   --chart-5: hsl(27 87% 67%);
   --radius: 0.6rem;
+  --button-secondary: hsl(0 0% 93.33%);
+  --button-secondary-500: hsl(0 0% 74.51%);
+  --button-secondary-900: hsl(0 0% 36.47%);
 }
 
 .dark {
@@ -67,6 +71,7 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-primary-900: var(--primary-900);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -88,6 +93,9 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-btn-secondary: var(--button-secondary);
+  --color-btn-secondary-500: var(--button-secondary-500);
+  --color-btn-secondary-900: var(--button-secondary-900);
 }
 
 @layer base {

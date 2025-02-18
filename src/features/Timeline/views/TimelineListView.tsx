@@ -50,7 +50,7 @@ export function TimelineListView() {
           <footer className="flex items-center gap-4 px-6 pt-4 mt-4 border-t-1 border-gray-100">
             <div className="flex items-center gap-2">
               <Button>Accept</Button>
-              <Button>Decline</Button>
+              <Button variant="secondary">Decline</Button>
             </div>
             <div className="text-lg">
               <p>
