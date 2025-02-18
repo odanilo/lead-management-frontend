@@ -1,3 +1,10 @@
+import { Container } from '@/components/container/Container';
+import { TimelineListView } from './features/Timeline/views/TimelineListView';
+
 export function App() {
-  return <h1>Hello world</h1>;
+  return (
+    <Container>
+      <TimelineListView />
+    </Container>
+  );
 }
