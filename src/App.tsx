@@ -3,7 +3,7 @@ import { TimelineListView } from './features/Timeline/views/TimelineListView';
 
 export function App() {
   return (
-    <Container>
+    <Container className="py-8">
       <TimelineListView />
     </Container>
   );
