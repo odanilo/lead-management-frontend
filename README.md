@@ -1,50 +1,62 @@
-# React + TypeScript + Vite
+# Lead Management Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend challenge to **recreate a lead management interface** that interacts with a **RESTful API** built in .NET. The application features two main sections:
 
-Currently, two official plugins are available:
+- **Invited Leads** tab
+- **Accepted Leads** tab
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![alt text](image.png)
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React 19 + Vite** – Fast development environment
+- **TailwindCSS** – Modern styling
+- **React Query** – Data fetching and caching
+- **Radix UI** – Accessible UI components
+- **Axios** – API requests
 
-- Configure the top-level `parserOptions` property like this:
+## 🔧 Setup & Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### **Prerequisites**
+
+Ensure you have **pnpm** installed:
+
+```sh
+npm install -g pnpm
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### **Clone & Install Dependencies**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+git clone git@github.com:odanilo/lead-management-frontend.git
+cd front
+pnpm install
 ```
+
+### **Environment Variables**
+
+Create a `.env.local` file and add the api URL:
+
+```sh
+VITE_API_URL=http://localhost:8080/
+```
+
+### **Run the Project**
+
+```sh
+pnpm run dev
+```
+
+The app will be available at `http://localhost:5173/`.
+
+## 📌 Features
+
+- Displays leads in **Invited** and **Accepted** tabs
+- Calls a **RESTful API** (to be defined)
+- Allows updating lead status
+
+## 🔬 Testing (Coming Soon)
+
+## 📄 License
+
+This project is for challenge purposes.
