@@ -4,6 +4,11 @@ import { PatchLeadStatusRepositoyRequest } from '../api/TimelineApiTypes';
 import { queryClient } from '@/lib/queryClient';
 import { getGetLeadsQueryKey } from './useGetLeads';
 import { useToast } from '@/hooks/use-toast';
+import {
+  ERROR_PATCH_LEAD_STATUS_TITLE,
+  SUCCESS_PATCH_LEAD_STATUS_DESCRIPTION,
+  SUCCESS_PATCH_LEAD_STATUS_TITLE,
+} from '../utils/Timeline.consts';
 
 export function usePatchLeadStatus() {
   const { toast } = useToast();
@@ -17,15 +22,15 @@ export function usePatchLeadStatus() {
       });
 
       toast({
-        title: 'Lead alterado com sucesso',
-        description: `Agora o lead estará com o status ${request.newStatus}`,
+        title: SUCCESS_PATCH_LEAD_STATUS_TITLE,
+        description: `${SUCCESS_PATCH_LEAD_STATUS_DESCRIPTION} ${request.newStatus}`,
       });
     },
     onError: (error) => {
       const errorDescription = error.message || error;
 
       toast({
-        title: 'Não foi possível alterar o lead',
+        title: ERROR_PATCH_LEAD_STATUS_TITLE,
         description: `${errorDescription}`,
         variant: 'destructive',
       });

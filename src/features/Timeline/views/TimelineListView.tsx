@@ -13,6 +13,12 @@ import { LoadingSpinner } from '@/components/loading/LoadingSpiner';
 import { TimelineLayout } from '../components/TimelineLayout';
 import { TimelinePending } from '../components/TimelinePending';
 import { TimelineError } from '../components/TimelineError';
+import {
+  BUTTON_ACCEPT_TEXT,
+  BUTTON_DECLINE_TEXT,
+  TAB_ACCEPTED_LABEL,
+  TAB_INVITED_LABEL,
+} from '../utils/Timeline.consts';
 
 export function TimelineListView() {
   const {
@@ -42,14 +48,14 @@ export function TimelineListView() {
       onTabClick: () => {
         getPendingLeadsRefetch();
       },
-      label: 'Invited',
+      label: TAB_INVITED_LABEL,
     },
     {
       value: 'accepted',
       onTabClick: () => {
         getAcceptedLeadsRefetch();
       },
-      label: 'Accepted',
+      label: TAB_ACCEPTED_LABEL,
     },
   ];
 
@@ -77,6 +83,10 @@ export function TimelineListView() {
             const isPending =
               patchLeadStatusVariables?.leadId === lead.id &&
               isPatchLeadStatusPending;
+            const isAcceptingLead =
+              isPending && patchLeadStatusVariables.newStatus === 'ACCEPTED';
+            const isDecliningLead =
+              isPending && patchLeadStatusVariables.newStatus === 'DECLINED';
 
             return (
               <TimelineCard key={lead.id} lead={lead}>
@@ -95,11 +105,8 @@ export function TimelineListView() {
                       }
                       disabled={isPending}
                     >
-                      Accept
-                      {isPending &&
-                      patchLeadStatusVariables.newStatus === 'ACCEPTED' ? (
-                        <LoadingSpinner />
-                      ) : null}
+                      {BUTTON_ACCEPT_TEXT}
+                      {isAcceptingLead ? <LoadingSpinner /> : null}
                     </Button>
                     <Button
                       variant="secondary"
@@ -111,11 +118,8 @@ export function TimelineListView() {
                       }
                       disabled={isPending}
                     >
-                      Decline
-                      {isPending &&
-                      patchLeadStatusVariables.newStatus === 'DECLINED' ? (
-                        <LoadingSpinner />
-                      ) : null}
+                      {BUTTON_DECLINE_TEXT}
+                      {isDecliningLead ? <LoadingSpinner /> : null}
                     </Button>
                   </TimelineCardActions>
 

@@ -17,10 +17,10 @@ export function TimelineError({ className }: Readonly<TimelineErrorProps>) {
       <WarningIcon className="size-32 text-gray-400" />
 
       <h3 className="text-2xl font-semibold">
-        Ocorreu um erro para encontrar os leads
+        An error occurred while fetching the leads
       </h3>
 
-      <p>Por favor tente novamente mais tarde.</p>
+      <p>Please try again later.</p>
     </CardBase>
   );
 }
