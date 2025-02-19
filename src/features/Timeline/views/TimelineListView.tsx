@@ -1,4 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { TabsContent } from '@/components/ui/tabs';
 import { useGetLeads } from '../hooks/useGetLeads';
 import { TimelineCard } from '../components/TimelineCard/TimelineCard';
 import { usePatchLeadStatus } from '../hooks/usePatchLeadStatus';
@@ -10,17 +10,22 @@ import { TimelineCardActions } from '../components/TimelineCard/TimelineCardActi
 import { Button } from '@/components/ui/button';
 import { LeadPrice } from '../components/TimelineCard/LeadPrice';
 import { LoadingSpinner } from '@/components/loading/LoadingSpiner';
+import { TimelineLayout } from '../components/TimelineLayout';
+import { TimelinePending } from '../components/TimelinePending';
+import { TimelineError } from '../components/TimelineError';
 
 export function TimelineListView() {
   const {
     data: getPendingLeadsData,
     refetch: getPendingLeadsRefetch,
     isPending: isGetPeadingLeadsPending,
+    error: getPendingLeadsError,
   } = useGetLeads({ status: 'PENDING' });
   const {
     data: getAcceptedLeadsData,
     refetch: getAcceptedLeadsRefetch,
     isPending: isGetAcceptedLeadsPending,
+    error: getAcceptedLeadsError,
   } = useGetLeads({ status: 'ACCEPTED' });
   const {
     mutate: patchLeadStatusMutate,
@@ -29,26 +34,43 @@ export function TimelineListView() {
   } = usePatchLeadStatus();
 
   const isPending = isGetPeadingLeadsPending || isGetAcceptedLeadsPending;
+  const hasError = getPendingLeadsError || getAcceptedLeadsError;
+
+  const tabs = [
+    {
+      value: 'invited',
+      onTabClick: () => {
+        getPendingLeadsRefetch();
+      },
+      label: 'Invited',
+    },
+    {
+      value: 'accepted',
+      onTabClick: () => {
+        getAcceptedLeadsRefetch();
+      },
+      label: 'Accepted',
+    },
+  ];
 
   if (isPending) {
     return (
-      <div className="mt-6 flex justify-center">
-        <LoadingSpinner />
-      </div>
+      <TimelineLayout tabs={tabs}>
+        <TimelinePending />
+      </TimelineLayout>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <TimelineLayout tabs={tabs}>
+        <TimelineError />
+      </TimelineLayout>
     );
   }
 
   return (
-    <Tabs defaultValue="invited">
-      <TabsList className="w-full flex">
-        <TabsTrigger value="invited" onClick={() => getPendingLeadsRefetch()}>
-          Invited
-        </TabsTrigger>
-        <TabsTrigger value="accepted" onClick={() => getAcceptedLeadsRefetch()}>
-          Accepted
-        </TabsTrigger>
-      </TabsList>
-
+    <TimelineLayout tabs={tabs}>
       <section className="mt-6 [&>_*]:flex [&>_*]:flex-col [&>_*]:gap-4">
         <TabsContent value="invited">
           {getPendingLeadsData?.map((lead) => {
@@ -114,6 +136,6 @@ export function TimelineListView() {
           ))}
         </TabsContent>
       </section>
-    </Tabs>
+    </TimelineLayout>
   );
 }
