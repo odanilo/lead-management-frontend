@@ -75,6 +75,7 @@ export const mockLeads: GetLeadsRepositoryResponse = [
     jobId: 'J1002',
     phone: '+15551234567',
     email: 'sarah@example.com',
+    profilePicture: 'https://randomuser.me/api/portraits/women/8.jpg',
   },
   {
     id: '3',
@@ -135,6 +136,7 @@ export const mockLeads: GetLeadsRepositoryResponse = [
     price: 2500.0,
     status: 'PENDING',
     jobId: 'J1007',
+    profilePicture: 'https://randomuser.me/api/portraits/men/5.jpg',
   },
   {
     id: '8',
