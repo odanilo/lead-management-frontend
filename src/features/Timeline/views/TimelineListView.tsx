@@ -1,7 +1,23 @@
-import { AvatarBase } from '@/components/avatar/AvatarBase';
 import { CardBase } from '@/components/card/CardBase';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { TimelineCardHeader } from '../components/TimelineCard/TimelineCardHeader';
+import { LeadProfile } from '../components/TimelineCard/LeadProfile';
+import { LeadDetailsList } from '../components/TimelineCard/LeadDetailsList';
+import { LeadDetailsItem } from '../components/TimelineCard/LeadDetailsItem';
+import { LocationIcon } from '@/components/icons/LocationIcon';
+import { BriefcaseIcon } from '@/components/icons/BriefcaseIcon';
+import { TimelineCardMain } from '../components/TimelineCard/TimelineCardMain';
+import { LeadDescription } from '../components/TimelineCard/LeadDescription';
+import { TimelineCardFooter } from '../components/TimelineCard/TimelineCardFooter';
+import { TimelineCardActions } from '../components/TimelineCard/TimelineCardActions';
+import { LeadPrice } from '../components/TimelineCard/LeadPrice';
+import { AvatarBase } from '@/components/avatar/AvatarBase';
+import { LeadName } from '../components/TimelineCard/LeadName';
+import { LeadDate } from '../components/TimelineCard/LeadDate';
+import { PhoneIcon } from '@/components/icons/PhoneIcon';
+import { EmailIcon } from '@/components/icons/EmailIcon';
+import { TimelineLink } from '../components/TimelineCard/TimelineLink';
 
 export function TimelineListView() {
   return (
@@ -10,54 +26,80 @@ export function TimelineListView() {
         <TabsTrigger value="invited">Invited</TabsTrigger>
         <TabsTrigger value="accepted">Accepted</TabsTrigger>
       </TabsList>
+
       <TabsContent value="invited" className="mt-4">
         <CardBase className="pb-4 text-gray-600" aria-labelledby="lead-name">
-          <header className="pt-4">
-            <div className="px-6 flex gap-4 items-center">
-              <AvatarBase src="https://github.com/shadcn.pnsg" fallback="B" />
-              <div className="leading-snug">
-                <h2 id="lead-name" className="text-black font-semibold">
-                  Bill
-                </h2>
-                <time dateTime="2025-01-04T14:37:00-05:00">
-                  January 4 @ 2:37pm
-                </time>
+          <TimelineCardHeader className="pt-4">
+            <LeadProfile>
+              <AvatarBase
+                alt="Profile picture of Bill"
+                src="https://github.com/shadcn.png"
+                fallback="B"
+              />
+
+              <div>
+                <LeadName>Bill</LeadName>
+                <LeadDate
+                  dateTime="2025-01-04T14:37:00-05:00"
+                  formattedDate="January 4 @ 2:37pm"
+                />
               </div>
-            </div>
+            </LeadProfile>
 
-            <nav
-              aria-label="Lead details"
-              className="px-6 pt-4 mt-4 border-t-1 text-lg border-gray-100"
+            <LeadDetailsList aria-label="Lead details">
+              <LeadDetailsItem>
+                <LocationIcon />
+                Yandera 2574
+              </LeadDetailsItem>
+
+              <LeadDetailsItem>
+                <BriefcaseIcon />
+                Painters
+              </LeadDetailsItem>
+
+              <LeadDetailsItem>Job ID: 5577421</LeadDetailsItem>
+            </LeadDetailsList>
+          </TimelineCardHeader>
+
+          <TimelineCardMain>
+            <LeadDetailsList
+              className="px-0 py-0 mt-0 border-t-0"
+              aria-label="Lead contacts"
             >
-              <ul className="flex gap-4">
-                <li>Yandera 2574</li>
-                <li>Painters</li>
-                <li>Job ID: 5577421</li>
-              </ul>
-            </nav>
-          </header>
+              <LeadDetailsItem>
+                <PhoneIcon />
+                <TimelineLink
+                  href="tel:0412345678"
+                  aria-label="Call Bill at 0412345678"
+                >
+                  0412345678
+                </TimelineLink>
+              </LeadDetailsItem>
 
-          <main className="px-6 pt-4 mt-4 border-t-1 border-gray-100">
-            <section aria-labelledby="lead-description">
-              <h3 id="lead-description" className="sr-only">
-                Lead Description
-              </h3>
+              <LeadDetailsItem>
+                <EmailIcon />
+                <TimelineLink
+                  href="mailto:fake@mailinator.com"
+                  aria-label="Email us at fake@mailinator.com"
+                >
+                  fake@mailinator.com
+                </TimelineLink>
+              </LeadDetailsItem>
+            </LeadDetailsList>
 
-              <p>Need to paint 2 aluminum windows and a sliding glass door</p>
-            </section>
-          </main>
+            <LeadDescription>
+              Need to paint 2 aluminum windows and a sliding glass door
+            </LeadDescription>
+          </TimelineCardMain>
 
-          <footer className="flex items-center gap-4 px-6 pt-4 mt-4 border-t-1 border-gray-100">
-            <div className="flex items-center gap-2">
+          <TimelineCardFooter>
+            <TimelineCardActions className="flex items-center gap-2">
               <Button>Accept</Button>
               <Button variant="secondary">Decline</Button>
-            </div>
-            <div className="text-lg">
-              <p>
-                <strong>$62.00</strong> Lead Invitation
-              </p>
-            </div>
-          </footer>
+            </TimelineCardActions>
+
+            <LeadPrice label="Lead Invitation" price="$62.00" />
+          </TimelineCardFooter>
         </CardBase>
       </TabsContent>
       <TabsContent value="accepted">Accepted list.</TabsContent>
