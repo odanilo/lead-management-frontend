@@ -9,23 +9,16 @@ import { LeadDetailsList } from './LeadDetailsList';
 import { LeadDetailsItem } from './LeadDetailsItem';
 import { LocationIcon } from '@/components/icons/LocationIcon';
 import { BriefcaseIcon } from '@/components/icons/BriefcaseIcon';
-import { TimelineCardMain } from './TimelineCardMain';
-import { PhoneIcon } from '@/components/icons/PhoneIcon';
-import { TimelineLink } from './TimelineLink';
-import { EmailIcon } from '@/components/icons/EmailIcon';
-import { LeadDescription } from './LeadDescription';
-import { TimelineCardFooter } from './TimelineCardFooter';
-import { TimelineCardActions } from './TimelineCardActions';
-import { Button } from '@/components/ui/button';
-import { LeadPrice } from './LeadPrice';
+import { PropsWithChildren } from 'react';
 
 type TimelineCardProps = {
   lead: LeadServiceResult;
 };
 
-export function TimelineCard({ lead }: Readonly<TimelineCardProps>) {
-  const hasContactInformation = lead.email || lead.phone;
-
+export function TimelineCard({
+  lead,
+  children,
+}: PropsWithChildren<TimelineCardProps>) {
   return (
     <CardBase
       key={lead.id}
@@ -64,45 +57,7 @@ export function TimelineCard({ lead }: Readonly<TimelineCardProps>) {
         </LeadDetailsList>
       </TimelineCardHeader>
 
-      <TimelineCardMain>
-        {hasContactInformation ? (
-          <LeadDetailsList
-            className="px-0 py-0 mt-0 border-t-0"
-            aria-label="Lead contacts"
-          >
-            <LeadDetailsItem>
-              <PhoneIcon />
-              <TimelineLink
-                href={`tel:${lead.phone}`}
-                aria-label={`Call ${lead.fullName} at ${lead.phone}`}
-              >
-                {lead.phone}
-              </TimelineLink>
-            </LeadDetailsItem>
-
-            <LeadDetailsItem>
-              <EmailIcon />
-              <TimelineLink
-                href={`mailto:${lead.email}`}
-                aria-label={`Email us at ${lead.email}`}
-              >
-                {lead.email}
-              </TimelineLink>
-            </LeadDetailsItem>
-          </LeadDetailsList>
-        ) : null}
-
-        <LeadDescription>{lead.description}</LeadDescription>
-      </TimelineCardMain>
-
-      <TimelineCardFooter>
-        <TimelineCardActions className="flex items-center gap-2">
-          <Button>Accept</Button>
-          <Button variant="secondary">Decline</Button>
-        </TimelineCardActions>
-
-        <LeadPrice>{lead.price}</LeadPrice>
-      </TimelineCardFooter>
+      {children}
     </CardBase>
   );
 }
