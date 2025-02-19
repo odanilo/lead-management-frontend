@@ -18,7 +18,7 @@ export function LeadDetailsList({
       )}
       {...rest}
     >
-      <ul className="flex gap-6">{children}</ul>
+      <ul className="flex gap-6 flex-wrap">{children}</ul>
     </nav>
   );
 }

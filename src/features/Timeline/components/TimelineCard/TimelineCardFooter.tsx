@@ -12,7 +12,7 @@ export function TimelineCardFooter({
   return (
     <footer
       className={cn(
-        'flex items-center gap-4 px-6 pt-4 mt-4 border-t-1 border-gray-100',
+        'flex flex-wrap items-center gap-4 px-6 pt-4 mt-4 border-t-1 border-gray-100',
         className,
       )}
     >
