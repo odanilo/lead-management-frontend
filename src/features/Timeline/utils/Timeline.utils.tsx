@@ -34,11 +34,8 @@ function getFullName(firstName: string, lastName?: string): string {
   return lastName ? `${firstName} ${lastName}` : firstName;
 }
 
-function getNameInitials(fullName: string) {
-  return fullName
-    .split(' ')
-    .map((name) => name.charAt(0))
-    .join('');
+function getNameInitial(name: string) {
+  return name.charAt(0);
 }
 
 export function mapGetLeadsService(data: Lead): LeadServiceResult {
@@ -48,7 +45,7 @@ export function mapGetLeadsService(data: Lead): LeadServiceResult {
     ...data,
     fullName,
     formattedDate: timestampToFormattedDate(data.createAt),
-    profilePictureFallback: getNameInitials(fullName),
+    profilePictureFallback: getNameInitial(fullName),
     price: formatPrice(data.price),
   };
 }
