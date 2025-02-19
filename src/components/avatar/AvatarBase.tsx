@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 type AvatarBaseProps = {
-  src: string;
+  src?: string;
   alt: string;
   fallback: string;
 };

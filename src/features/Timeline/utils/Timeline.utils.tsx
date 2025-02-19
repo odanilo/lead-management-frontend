@@ -21,6 +21,19 @@ function timestampToFormattedDate(
     .replace('at', '@');
 }
 
+function formatPrice(price: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(price);
+}
+
+function getFullName(firstName: string, lastName?: string): string {
+  return lastName ? `${firstName} ${lastName}` : firstName;
+}
+
 function getNameInitials(fullName: string) {
   return fullName
     .split(' ')
@@ -29,13 +42,14 @@ function getNameInitials(fullName: string) {
 }
 
 export function mapGetLeadsService(data: Lead): LeadServiceResult {
-  const fullName = `${data.firstName} ${data.lastName}`;
+  const fullName = getFullName(data.firstName, data.lastName);
 
   return {
     ...data,
     fullName,
     formattedDate: timestampToFormattedDate(data.createAt),
     profilePictureFallback: getNameInitials(fullName),
+    price: formatPrice(data.price),
   };
 }
 
@@ -43,7 +57,6 @@ export const mockLeads: GetLeadsRepositoryResponse = [
   {
     id: '1',
     firstName: 'John',
-    lastName: 'Doe',
     createAt: '2025-01-04 14:37:00',
     suburb: 'Brooklyn',
     category: 'Paintes',
@@ -81,12 +94,11 @@ export const mockLeads: GetLeadsRepositoryResponse = [
   {
     id: '4',
     firstName: 'Emma',
-    lastName: 'Johnson',
     createAt: '2025-01-07 14:00:00',
     suburb: 'Bronx',
     category: 'Home Renovations',
     description: 'Kitchen remodeling.',
-    price: 5000.0,
+    price: 5000.2,
     status: 'PENDING',
     jobId: 'J1004',
   },
@@ -119,7 +131,6 @@ export const mockLeads: GetLeadsRepositoryResponse = [
   {
     id: '7',
     firstName: 'Michael',
-    lastName: 'Smith',
     createAt: '2025-01-10 16:00:00',
     suburb: 'Jersey City',
     category: 'General Building Work',
@@ -157,7 +168,6 @@ export const mockLeads: GetLeadsRepositoryResponse = [
   {
     id: '10',
     firstName: 'Ava',
-    lastName: 'Taylor',
     createAt: '2025-01-13 11:10:00',
     suburb: 'Yonkers',
     category: 'Interior Painters',

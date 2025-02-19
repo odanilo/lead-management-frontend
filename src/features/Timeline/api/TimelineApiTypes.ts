@@ -30,11 +30,12 @@ export type GetLeadsRepositoryResponse = Lead[];
 
 export type LeadServiceResult = Omit<
   Lead,
-  'firstName' | 'lastName' | 'createAt'
+  'firstName' | 'lastName' | 'price'
 > & {
   fullName: string;
   formattedDate: string;
   profilePictureFallback: string;
+  price: string;
 };
 
 export type GetLeadsServiceResult = LeadServiceResult[];

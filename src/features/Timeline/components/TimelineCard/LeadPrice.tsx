@@ -1,20 +1,20 @@
 import { cn } from '@/lib/utils';
+import { PropsWithChildren } from 'react';
 
 type LeadPriceProps = {
   className?: string;
-  price: string;
-  label: string;
+  label?: string;
 };
 
 export function LeadPrice({
-  label,
-  price,
+  label = 'Lead invitation',
   className,
-}: Readonly<LeadPriceProps>) {
+  children,
+}: PropsWithChildren<LeadPriceProps>) {
   return (
     <div className={cn('text-lg', className)}>
       <p>
-        <strong>{price}</strong> {label}
+        <strong>{children}</strong> {label}
       </p>
     </div>
   );
