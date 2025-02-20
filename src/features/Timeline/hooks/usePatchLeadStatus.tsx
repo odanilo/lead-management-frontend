@@ -18,7 +18,7 @@ export function usePatchLeadStatus() {
       patchLeadStatusService(request),
     onSuccess: async (_, request) => {
       await queryClient.invalidateQueries({
-        queryKey: getGetLeadsQueryKey(request.newStatus),
+        queryKey: getGetLeadsQueryKey('PENDING'),
       });
 
       toast({

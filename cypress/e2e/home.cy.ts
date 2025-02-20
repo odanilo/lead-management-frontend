@@ -99,7 +99,7 @@ describe('Home tests', () => {
       cy.get('[data-cy="TimelineCard_Time"]')
         .should('be.visible')
         .should('have.attr', 'datetime', '2025-01-04 14:37:00')
-        .should('have.text', 'January 4 @ 11:37 AM');
+        .should('have.text', 'January 4 @ 11:37 am');
 
       cy.get('[data-cy="TimelineCard_Lead_Details"]').should('be.visible');
 
