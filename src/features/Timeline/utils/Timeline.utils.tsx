@@ -18,7 +18,9 @@ function timestampToFormattedDate(
     hour12: true,
   })
     .format(date)
-    .replace('at', '@');
+    .replace('at', '@')
+    .replace('AM', 'am')
+    .replace('PM', 'pm');
 }
 
 function formatPrice(price: number): string {

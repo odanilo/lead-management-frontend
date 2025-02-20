@@ -10,20 +10,23 @@ import { LeadDetailsItem } from './LeadDetailsItem';
 import { LocationIcon } from '@/components/icons/LocationIcon';
 import { BriefcaseIcon } from '@/components/icons/BriefcaseIcon';
 import { ComponentProps, PropsWithChildren } from 'react';
+import { cn } from '@/lib/utils';
 
 type TimelineCardProps = {
   lead: LeadServiceResult;
+  className?: string;
 } & ComponentProps<'article'>;
 
 export function TimelineCard({
   lead,
+  className,
   children,
   ...rest
 }: PropsWithChildren<TimelineCardProps>) {
   return (
     <CardBase
       key={lead.id}
-      className="pb-4 text-gray-600"
+      className={cn('pb-4 text-gray-600', className)}
       aria-labelledby="lead-name"
       {...rest}
     >
@@ -62,6 +65,12 @@ export function TimelineCard({
           <LeadDetailsItem data-cy="TimelineCard_Lead_JobId">
             Job ID: {lead.jobId}
           </LeadDetailsItem>
+
+          {lead.status === 'ACCEPTED' ? (
+            <LeadDetailsItem data-cy="TimelineCard_Details_Price">
+              {lead.price} Lead Invitation
+            </LeadDetailsItem>
+          ) : null}
         </LeadDetailsList>
       </TimelineCardHeader>
 

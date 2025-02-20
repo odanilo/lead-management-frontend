@@ -143,6 +143,7 @@ export function TimelineListView() {
               key={lead.id}
               lead={lead}
               data-cy={`TimelineCard_Accepted_${index}`}
+              className="odd:[&_span:last-child]:bg-gray-500 even:[&_span:last-child]:bg-primary-300"
             >
               <TimelineCardMain>
                 <LeadContactInformation lead={lead} />

@@ -11,7 +11,7 @@ export function Container({
   ...rest
 }: Readonly<PropsWithChildren<ContainerProps>>) {
   return (
-    <div className={cn('max-w-2xl mx-auto px-4', className)} {...rest}>
+    <div className={cn('max-w-3xl mx-auto px-4', className)} {...rest}>
       {children}
     </div>
   );
