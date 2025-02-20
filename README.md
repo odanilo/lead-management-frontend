@@ -55,7 +55,27 @@ The app will be available at `http://localhost:5173/`.
 - Calls a **RESTful API** (to be defined)
 - Allows updating lead status
 
-## 🔬 Testing (Coming Soon)
+## 🔬 Testing
+
+Before running the tests, uncomment the code inside `getLeadsRepository` to enable API calls, allowing Cypress to intercept them properly.
+
+```ts
+export const getLeadsRepository = async (
+  params?: GetLeadsRepositoryParams,
+): Promise<{ data: GetLeadsRepositoryResponse }> => {
+  return await httpClient.get<GetLeadsRepositoryResponse>('leads', {
+    params,
+  });
+};
+```
+
+After that, to execute the tests, run:
+
+```
+pnpm cy:open
+```
+
+Then, navigate to **"E2E Tests"** and select the home.cy.ts spec to run.
 
 ## 📄 License
 
