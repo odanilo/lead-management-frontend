@@ -7,7 +7,7 @@ type TimelinePendingProps = {
 
 export function TimelinePending({ className }: Readonly<TimelinePendingProps>) {
   return (
-    <div className={cn('mt-6 flex justify-center', className)}>
+    <div className={cn('mt-6 flex justify-center', className)} data-cy="TimelinePending_Container">
       <LoadingSpinner />
     </div>
   );

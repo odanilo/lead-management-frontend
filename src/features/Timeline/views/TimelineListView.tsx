@@ -49,6 +49,7 @@ export function TimelineListView() {
         getPendingLeadsRefetch();
       },
       label: TAB_INVITED_LABEL,
+      dataCy: 'Tab_Trigger_Invited',
     },
     {
       value: 'accepted',
@@ -56,6 +57,7 @@ export function TimelineListView() {
         getAcceptedLeadsRefetch();
       },
       label: TAB_ACCEPTED_LABEL,
+      dataCy: 'Tab_Trigger_Accepted',
     },
   ];
 
@@ -79,7 +81,7 @@ export function TimelineListView() {
     <TimelineLayout tabs={tabs}>
       <section className="mt-6 [&>_*]:flex [&>_*]:flex-col [&>_*]:gap-4">
         <TabsContent value="invited">
-          {getPendingLeadsData?.map((lead) => {
+          {getPendingLeadsData?.map((lead, index) => {
             const isPending =
               patchLeadStatusVariables?.leadId === lead.id &&
               isPatchLeadStatusPending;
@@ -89,7 +91,11 @@ export function TimelineListView() {
               isPending && patchLeadStatusVariables.newStatus === 'DECLINED';
 
             return (
-              <TimelineCard key={lead.id} lead={lead}>
+              <TimelineCard
+                key={lead.id}
+                lead={lead}
+                data-cy={`TimelineCard_Pending_${index}`}
+              >
                 <TimelineCardMain>
                   <LeadDescription>{lead.description}</LeadDescription>
                 </TimelineCardMain>
@@ -104,6 +110,7 @@ export function TimelineListView() {
                         })
                       }
                       disabled={isPending}
+                      data-cy="TimelineCard_Button_Accept"
                     >
                       {BUTTON_ACCEPT_TEXT}
                       {isAcceptingLead ? <LoadingSpinner /> : null}
@@ -117,6 +124,7 @@ export function TimelineListView() {
                         })
                       }
                       disabled={isPending}
+                      data-cy="TimelineCard_Button_Decline"
                     >
                       {BUTTON_DECLINE_TEXT}
                       {isDecliningLead ? <LoadingSpinner /> : null}
@@ -130,8 +138,12 @@ export function TimelineListView() {
           })}
         </TabsContent>
         <TabsContent value="accepted">
-          {getAcceptedLeadsData?.map((lead) => (
-            <TimelineCard key={lead.id} lead={lead}>
+          {getAcceptedLeadsData?.map((lead, index) => (
+            <TimelineCard
+              key={lead.id}
+              lead={lead}
+              data-cy={`TimelineCard_Accepted_${index}`}
+            >
               <TimelineCardMain>
                 <LeadContactInformation lead={lead} />
                 <LeadDescription>{lead.description}</LeadDescription>

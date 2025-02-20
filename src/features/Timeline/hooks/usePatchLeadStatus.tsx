@@ -23,7 +23,7 @@ export function usePatchLeadStatus() {
 
       toast({
         title: SUCCESS_PATCH_LEAD_STATUS_TITLE,
-        description: `${SUCCESS_PATCH_LEAD_STATUS_DESCRIPTION} ${request.newStatus}`,
+        description: `${SUCCESS_PATCH_LEAD_STATUS_DESCRIPTION} ${request.newStatus.toLowerCase()}`,
       });
     },
     onError: (error) => {
