@@ -1,0 +1,45 @@
+[
+  {
+    "id": "2",
+    "firstName": "Sarah",
+    "lastName": "Miller",
+    "createAt": "2025-01-05 10:15:00",
+    "suburb": "Queens",
+    "category": "Interior Painters",
+    "description": "Repaint a living room.",
+    "price": 200.0,
+    "status": "ACCEPTED",
+    "jobId": "J1002",
+    "phone": "+15551234567",
+    "email": "sarah@example.com",
+    "profilePicture": "https://randomuser.me/api/portraits/women/8.jpg"
+  },
+  {
+    "id": "5",
+    "firstName": "James",
+    "lastName": "Williams",
+    "createAt": "2025-01-08 12:30:00",
+    "suburb": "Staten Island",
+    "category": "Paintes",
+    "description": "Fence painting job.",
+    "price": 120.0,
+    "status": "ACCEPTED",
+    "jobId": "J1005",
+    "phone": "+15552345678",
+    "email": "james@example.com"
+  },
+  {
+    "id": "8",
+    "firstName": "Sophia",
+    "lastName": "Davis",
+    "createAt": "2025-01-11 07:50:00",
+    "suburb": "Hoboken",
+    "category": "Home Renovations",
+    "description": "Full home makeover.",
+    "price": 10000.0,
+    "status": "ACCEPTED",
+    "jobId": "J1008",
+    "phone": "+15553456789",
+    "email": "sophia@example.com"
+  }
+]

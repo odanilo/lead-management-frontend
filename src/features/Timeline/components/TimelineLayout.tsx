@@ -5,6 +5,7 @@ export type Tab = {
   value: string;
   onTabClick: () => void;
   label: string;
+  dataCy: string;
 };
 
 type TimelineLayoutProps = {
@@ -23,6 +24,7 @@ export function TimelineLayout({
             key={tab.value}
             value={tab.value}
             onClick={tab.onTabClick}
+            data-cy={tab.dataCy}
           >
             {tab.label}
           </TabsTrigger>

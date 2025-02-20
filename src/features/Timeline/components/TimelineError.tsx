@@ -16,11 +16,11 @@ export function TimelineError({ className }: Readonly<TimelineErrorProps>) {
     >
       <WarningIcon className="size-32 text-gray-400" />
 
-      <h3 className="text-2xl font-semibold">
+      <h3 className="text-2xl font-semibold" data-cy="TimelineCard_Error_Title">
         An error occurred while fetching the leads
       </h3>
 
-      <p>Please try again later.</p>
+      <p data-cy="TimelineCard_Error_Description">Please try again later.</p>
     </CardBase>
   );
 }

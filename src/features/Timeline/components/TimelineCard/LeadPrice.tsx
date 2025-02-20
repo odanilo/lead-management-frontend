@@ -12,7 +12,7 @@ export function LeadPrice({
   children,
 }: PropsWithChildren<LeadPriceProps>) {
   return (
-    <div className={cn('text-lg', className)}>
+    <div className={cn('text-lg', className)} data-cy="TimelineCard_Lead_Price">
       <p>
         <strong>{children}</strong> {label}
       </p>

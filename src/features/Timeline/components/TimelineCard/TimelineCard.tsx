@@ -9,21 +9,23 @@ import { LeadDetailsList } from './LeadDetailsList';
 import { LeadDetailsItem } from './LeadDetailsItem';
 import { LocationIcon } from '@/components/icons/LocationIcon';
 import { BriefcaseIcon } from '@/components/icons/BriefcaseIcon';
-import { PropsWithChildren } from 'react';
+import { ComponentProps, PropsWithChildren } from 'react';
 
 type TimelineCardProps = {
   lead: LeadServiceResult;
-};
+} & ComponentProps<'article'>;
 
 export function TimelineCard({
   lead,
   children,
+  ...rest
 }: PropsWithChildren<TimelineCardProps>) {
   return (
     <CardBase
       key={lead.id}
       className="pb-4 text-gray-600"
       aria-labelledby="lead-name"
+      {...rest}
     >
       <TimelineCardHeader className="pt-4">
         <LeadProfile>
@@ -34,26 +36,32 @@ export function TimelineCard({
           />
 
           <div>
-            <LeadName>{lead.fullName}</LeadName>
+            <LeadName data-cy="TimelineCard_Title">{lead.fullName}</LeadName>
             <LeadDate
               dateTime={lead.createAt}
               formattedDate={lead.formattedDate}
+              data-cy="TimelineCard_Time"
             />
           </div>
         </LeadProfile>
 
-        <LeadDetailsList aria-label="Lead details">
-          <LeadDetailsItem>
+        <LeadDetailsList
+          aria-label="Lead details"
+          data-cy="TimelineCard_Lead_Details"
+        >
+          <LeadDetailsItem data-cy="TimelineCard_Lead_Suburb">
             <LocationIcon />
             {lead.suburb}
           </LeadDetailsItem>
 
-          <LeadDetailsItem>
+          <LeadDetailsItem data-cy="TimelineCard_Lead_Category">
             <BriefcaseIcon />
             {lead.category}
           </LeadDetailsItem>
 
-          <LeadDetailsItem>Job ID: {lead.jobId}</LeadDetailsItem>
+          <LeadDetailsItem data-cy="TimelineCard_Lead_JobId">
+            Job ID: {lead.jobId}
+          </LeadDetailsItem>
         </LeadDetailsList>
       </TimelineCardHeader>
 

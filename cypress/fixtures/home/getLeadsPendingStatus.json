@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "firstName": "John",
+    "createAt": "2025-01-04 14:37:00",
+    "suburb": "Brooklyn",
+    "category": "Paintes",
+    "description": "Paint the exterior of a house.",
+    "price": 150.0,
+    "status": "PENDING",
+    "jobId": "J1001"
+  },
+  {
+    "id": "4",
+    "firstName": "Emma",
+    "createAt": "2025-01-07 14:00:00",
+    "suburb": "Bronx",
+    "category": "Home Renovations",
+    "description": "Kitchen remodeling.",
+    "price": 5000.2,
+    "status": "PENDING",
+    "jobId": "J1004"
+  },
+  {
+    "id": "7",
+    "firstName": "Michael",
+    "createAt": "2025-01-10 16:00:00",
+    "suburb": "Jersey City",
+    "category": "General Building Work",
+    "description": "Build a wooden deck.",
+    "price": 2500.0,
+    "status": "PENDING",
+    "jobId": "J1007",
+    "profilePicture": "https://randomuser.me/api/portraits/men/5.jpg"
+  },
+  {
+    "id": "10",
+    "firstName": "Ava",
+    "createAt": "2025-01-13 11:10:00",
+    "suburb": "Yonkers",
+    "category": "Interior Painters",
+    "description": "Painting a master bedroom.",
+    "price": 220.0,
+    "status": "PENDING",
+    "jobId": "J1010"
+  }
+]
